@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { Ng2BootstrapModule } from "ng2-bootstrap";
 import { LeafletComponent } from './map/leaflet/leaflet.component';
+import { AgmCoreModule } from "angular2-google-maps/core";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,9 @@ import { LeafletComponent } from './map/leaflet/leaflet.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyACeilyJdXFI3FVKPnxnOWgqQ9X_ZaE0uk'
+    }),
     Ng2BootstrapModule.forRoot() // Bootstrap theme
    // SimpleNotificationsModule // Notification Toast
   ],
