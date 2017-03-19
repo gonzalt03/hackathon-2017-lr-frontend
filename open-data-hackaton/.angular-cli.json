@@ -23,8 +23,6 @@
         "styles.css"
       ],
       "scripts": [
-        "../node_modules/angular2-notifications/*.+(js|js.map)",
-        "../node_modules/angular2-notifications/lib/*.+(js|js.map)"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

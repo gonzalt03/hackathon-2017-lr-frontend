@@ -1,2 +1,14 @@
+<app-header></app-header>
 <simple-notifications [options]="options"></simple-notifications>
-<button (click)="create()"></button>
+
+<div class="wrapper">
+
+  <app-sidebar></app-sidebar>
+
+  <div class="main-panel">
+    <navbar-header></navbar-header>
+    <app-dashboard></app-dashboard>
+    <app-footer></app-footer>
+  </div>
+
+</div>
