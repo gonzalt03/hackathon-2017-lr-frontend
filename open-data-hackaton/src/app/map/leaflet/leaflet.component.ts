@@ -19,9 +19,9 @@ export class LeafletComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.map = L.map(this.mapContainer.nativeElement).setView([51.5, -0.09], 13);
 
-    let testIcon = L.AwesomeMarkers.icon({icon: 'group', prefix: 'fa', markerColor: 'darkred'});
+    //let testIcon = L.AwesomeMarkers.icon({icon: 'group', prefix: 'fa', markerColor: 'darkred'});
 
-    L.marker([51.5, -0.09], {icon: testIcon}).addTo(this.map).bindPopup("I am a awesome marker.");
+    //L.marker([51.5, -0.09], {icon: testIcon}).addTo(this.map).bindPopup("I am a awesome marker.");
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       maxZoom: 5,
