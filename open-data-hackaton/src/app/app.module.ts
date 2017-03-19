@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {Ng2BootstrapModule} from "ng2-bootstrap";
-//import {SimpleNotificationsModule} from "angular2-notifications";
+import {SimpleNotificationsModule} from "angular2-notifications";
 
 @NgModule({
   declarations: [
@@ -15,6 +15,7 @@ import {Ng2BootstrapModule} from "ng2-bootstrap";
     BrowserModule,
     FormsModule,
     HttpModule,
+    SimpleNotificationsModule.forRoot(),
     Ng2BootstrapModule.forRoot() // Bootstrap theme
    // SimpleNotificationsModule // Notification Toast
   ],

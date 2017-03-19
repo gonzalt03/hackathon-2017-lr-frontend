@@ -22,7 +22,10 @@
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/angular2-notifications/*.+(js|js.map)",
+        "../node_modules/angular2-notifications/lib/*.+(js|js.map)"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

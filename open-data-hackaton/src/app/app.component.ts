@@ -9,8 +9,14 @@ import {NotificationsService} from "angular2-notifications";
 export class AppComponent {
   title = 'app works!';
 
-  //constructor(private serviceNotification: NotificationsService) {
-    //console.log(this.serviceNotification.success('Some Title', 'Some Content'));
-  //}
+  constructor(private _service: NotificationsService) {}
+  public options = {
+    timeOut: 5000,
+    lastOnBottom: true
+  };
+
+  create() {
+    this._service.success('bla', 'example')
+  }
 
 }
