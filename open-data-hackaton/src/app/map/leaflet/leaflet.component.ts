@@ -17,14 +17,16 @@ export class LeafletComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.map = L.map(this.mapContainer.nativeElement).setView([51.5, -0.09], 13);
+    this.map = L.map(this.mapContainer.nativeElement).setView([46.166, -1.150], 13);
 
     //let testIcon = L.AwesomeMarkers.icon({icon: 'group', prefix: 'fa', markerColor: 'darkred'});
 
     //L.marker([51.5, -0.09], {icon: testIcon}).addTo(this.map).bindPopup("I am a awesome marker.");
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-      maxZoom: 5,
+      minZoom:11,
+      maxZoom: 18,
+      zoom:13,
       detectRetina: true,
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
