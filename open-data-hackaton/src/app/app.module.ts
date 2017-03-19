@@ -2,14 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { AppComponent } from './app.component';
-import {Ng2BootstrapModule} from "ng2-bootstrap";
-//import {SimpleNotificationsModule} from "angular2-notifications";
+import { Ng2BootstrapModule } from "ng2-bootstrap";
+import { LeafletComponent } from './map/leaflet/leaflet.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LeafletComponent
   ],
   imports: [
     BrowserModule,

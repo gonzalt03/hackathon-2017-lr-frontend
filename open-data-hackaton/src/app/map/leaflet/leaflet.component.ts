@@ -1,0 +1,29 @@
+import {Component, OnInit, ViewChild, OnDestroy} from '@angular/core';
+import 'leaflet';
+
+@Component({
+  selector: 'map-leaflet',
+  template: `<div #mapDiv class="leaflet-map"></div>`,
+  styleUrls: ['leaflet.component.css']
+})
+export class LeafletComponent implements OnInit, OnDestroy {
+  map: L.Map = null;
+
+  @ViewChild('mapDiv') mapContainer;
+  private id: string;
+
+  constructor() {
+    this.id = "map" + Date.now();
+  }
+
+  ngOnInit() {
+    this.map = L.map(this.mapContainer.nativeElement).setView([54.5, -115.0], 13);
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution:
+        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(this.map);
+  }
+
+  ngOnDestroy() { }
+}
