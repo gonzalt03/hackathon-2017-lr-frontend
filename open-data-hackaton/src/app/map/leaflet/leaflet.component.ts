@@ -17,9 +17,10 @@ export class LeafletComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.map = L.map(this.mapContainer.nativeElement).setView([54.5, -115.0], 13);
+    this.map = L.map(this.mapContainer.nativeElement).setView([51.5, -0.09], 13);
+
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
+      maxZoom: 5,
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
