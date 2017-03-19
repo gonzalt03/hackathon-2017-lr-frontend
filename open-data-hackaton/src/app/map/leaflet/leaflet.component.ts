@@ -25,6 +25,7 @@ export class LeafletComponent implements OnInit, OnDestroy {
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       maxZoom: 5,
+      detectRetina: true,
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
