@@ -20,7 +20,7 @@ import { LeafletComponent } from './map/leaflet/leaflet.component';
     DashboardComponent,
     SidebarComponent,
     NavbarHeaderComponent,
-    FooterComponent
+    FooterComponent,
     AppComponent,
     LeafletComponent
   ],
