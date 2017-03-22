@@ -18,6 +18,8 @@ angular
     'ui.bootstrap',
     'ui.bootstrap.tpls',
     '720kb.socialshare'
+    'ui.bootstrap.tpls',
+    'leaflet-directive'
   ])
   .config(['socialshareConfProvider', function(socialshareConfProvider) {
 
