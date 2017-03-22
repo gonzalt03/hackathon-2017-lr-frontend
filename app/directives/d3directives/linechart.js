@@ -3,14 +3,14 @@ angular.module('frontProjectApp')
   return {
     restrict: 'E',
     scope: {
-      title: '=',
+      mytitle: '=',
       data: '='
     },
-    template: '<nvd3 options="{{options}}" data="{{data}}"></nvd3>',
-    link: function(scope, element, attr){
-      scope.options = {
+    template: '<nvd3 options="myoptions" data="data"></nvd3>',
+    link: function(scope){
+      scope.myoptions = {
         chart: {
-          type: 'linechart',
+          type: 'lineChart',
           height: 500,
           margin : {
             top: 20,
@@ -30,7 +30,7 @@ angular.module('frontProjectApp')
         },
         title: {
           enable: true,
-          text: scope.title
+          text: scope.mytitle
         },
         subtitle: {
           enable: false,
