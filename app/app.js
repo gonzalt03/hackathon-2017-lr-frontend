@@ -24,7 +24,33 @@ angular
         templateUrl: 'components/home/home.html',
         controller: 'HomeCtrl'
       })
+      .when('/search', {
+        templateUrl: 'components/search/search.html',
+        controller: 'SearchCtrl'
+      })
+      .when('/dataset', {
+        templateUrl: 'components/dataset/dataset.html',
+        controller: 'DatasetCtrl'
+      })
+      .when('/dataset/:id', {
+        templateUrl: 'components/dataset/dataset_details.html',
+        controller: 'DatasetDetailsCtrl'
+      })
+      .when('/builder', {
+        templateUrl: 'components/builder/builder.html',
+        controller: 'BuilderCtrl'
+      })
+      .when('/view', {
+        templateUrl: 'components/view/view.html',
+        controller: 'ViewCtrl'
+      })
+      .when('/view/:id', {
+        templateUrl: 'components/view/view.html',
+        controller: 'ViewDetailsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
   });
+
+
