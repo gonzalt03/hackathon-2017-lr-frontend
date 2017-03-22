@@ -2,11 +2,14 @@
 
   <div class="row search">
     <h3 class="animated fadeInDown">Tout commence par une recherche...</h3>
-    <form class="form-horizontal col-md-8 col-md-offset-2 has-feedback" role="form">
+    <form ng-submit="search(query)" class="form-horizontal col-md-8 col-md-offset-2 has-feedback" role="form">
       <div class="form-group">
         <input ng-model="query" type="text" class="form-control input-lg" placeholder="Que cherchez-vous ?">
         <i class="glyphicon glyphicon-search form-control-feedback"></i>
       </div>
+        <div ng-if="query.length" ng-repeat="result in resultsRequest | filter:query">
+          <div ng-click="goDataset(result.id)" class="result"><i class="fa" ng-class="iconDataType(result)" aria-hidden="true"></i> {{result.name}}</div>
+        </div>
     </form>
   </div>
 
@@ -14,7 +17,7 @@
     <uib-tabset active="active">
       <uib-tab index="0" heading="Plus regardées">
         <div ng-repeat="aCard in cardShowed">
-          <div class="animated fadeIn card col-xs-4" style="{{timePicture($index)}}">
+          <div ng-click="goDataset(aCard.id)" class="animated fadeIn card col-xs-4" style="{{timePicture($index)}}">
             <h1>{{aCard.title}}</h1>
             <p><i class="fa fa-refresh" aria-hidden="true"></i> {{aCard.frequence}}</p>
             <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{aCard.location}}</p>
@@ -23,7 +26,7 @@
       </uib-tab>
       <uib-tab index="1" heading="Plus téléchargées">
         <div ng-repeat="aCard in cardDownloaded">
-          <div class="animated fadeIn card col-xs-4" style="{{timePicture($index)}}">
+          <div ng-click="goDataset(aCard.id)" class="animated fadeIn card col-xs-4" style="{{timePicture($index)}}">
             <h1>{{aCard.title}}</h1>
             <p><i class="fa fa-refresh" aria-hidden="true"></i> {{aCard.frequence}}</p>
             <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{aCard.location}}</p>
@@ -35,6 +38,10 @@
 
   <div class="stats row text-center">
       <p>Sur cette plateforme est disponible: 58 jeu de données, 3 sources</p>
+  </div>
+
+  <div class="row text-center">
+    <share light="true"></share>
   </div>
 
 </div>

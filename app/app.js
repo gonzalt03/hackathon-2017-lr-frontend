@@ -16,15 +16,47 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
-    'ui.bootstrap.tpls'
+    'ui.bootstrap.tpls',
+    '720kb.socialshare'
+    'ui.bootstrap.tpls',
+    'leaflet-directive'
   ])
+  .config(['socialshareConfProvider', function(socialshareConfProvider) {
+
+    socialshareConfProvider.configure([
+      {
+        'provider': 'twitter',
+        'conf': {
+          'hashtags': 'opendata',
+          'trigger': 'click',
+          'popupHeight': 400,
+          'popupWidth' : 400
+        }
+      },
+      {
+        'provider': 'facebook',
+        'conf': {
+          'popupHeight': 400,
+          'popupWidth' : 400
+        }
+      },
+      {
+        'provider': 'email',
+        'conf': {
+          'subject' : "Lien vers un open-data",
+          'popupHeight' : "300",
+          'popupWidth' : "400"
+        }
+      }
+    ]);
+  }])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'components/home/home.html',
         controller: 'HomeCtrl'
       })
-      .when('/search', {
+      .when('/search/:query', {
         templateUrl: 'components/search/search.html',
         controller: 'SearchCtrl'
       })
