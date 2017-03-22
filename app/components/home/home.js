@@ -8,10 +8,18 @@
  * Controller of the frontProjectApp
  */
 angular.module('frontProjectApp')
-  .controller('HomeCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+  .controller('HomeCtrl', function ($scope) {
+
+    $scope.cardShowed = [
+      {title : "Mon titre 1"},
+      {title : "Mon titre 2"},
+      {title : "Mon titre 3"}
     ];
+
+    $scope.cardDownloaded = [
+      {title : "Mon titre 1"},
+      {title : "Mon titre 2"},
+      {title : "Mon titre 3"}
+    ];
+
   });
