@@ -46,7 +46,7 @@ angular.module('frontProjectApp')
       $scope.select = function () {
         leafletData.getMap().then(function (map) {
           console.log(map);
-          var url = "ca_borne.kml";
+          var url = "tr_piste_cyclable.kml";
           console.log(url);
           $scope.rectLayer = omnivore.kml(url).on('ready', function () {
 
