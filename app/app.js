@@ -16,7 +16,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
-    'ui.bootstrap.tpls'
+    'ui.bootstrap.tpls',
+    'nvd3'
   ])
   .config(function ($routeProvider) {
     $routeProvider
