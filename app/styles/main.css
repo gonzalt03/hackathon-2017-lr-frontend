@@ -79,10 +79,18 @@
   padding: 0.2em 0;
 }
 
+
+.home .stats p{
+  margin-top: 35px;
+  color: #828282;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
+}
+
 body {
   padding: 0;
   font-family: 'Open Sans', sans-serif;
-  /*background: url("../images/Background.png");*/
 }
 
 
