@@ -1,12 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dataset_details</title>
-</head>
-<body>
+<div class="row datasetDetailsPage">
 
-  <h1>Dataset_details</h1>
+  <div class="col-md-12">
+    <h2>Jeu de données</h2>
+    <h1>{{dataset.name}}</h1>
+  </div>
 
-</body>
-</html>
+  <div class="col-md-12 row">
+
+    <div class="text-right">
+      <button type="button" class="btn btn-warning"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Signaler
+        un problème
+      </button>
+    </div>
+
+    <uib-tabset active="active">
+      <uib-tab index="0" heading="Informations">
+        <p>Babla</p>
+      </uib-tab>
+      <uib-tab index="1" heading="Tableau filtrant">
+        <p>Babladfsdfd</p>
+
+      </uib-tab>
+      <uib-tab index="2" heading="Cartographie">
+        <p>Bablfdsa</p>
+
+      </uib-tab>
+    </uib-tabset>
+
+    <div class="row text-center">
+      <share light="false"></share>
+    </div>
+
+  </div>
+
+</div>
