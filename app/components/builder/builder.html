@@ -1,19 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="row builderPage">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Builder</title>
-</head>
-<body>
+  <div class="col-md-12 builderHeader">
+    <h2>Création d'une vue personnalisée</h2>
+    <h1>Utilisation de 4 jeu de données</h1>
+  </div>
 
-  <h1>Builder</h1>
+  <div class="row builderBasket">
+    <div class="col-md-4 searchLeft">
+      <uib-accordion close-others="oneAtATime">
+      <div ng-repeat="result in results">
+          <div uib-accordion-group class="panel-default" is-open="status.open">
+            <uib-accordion-heading>
+              {{result.title}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+            </uib-accordion-heading>
+            <ul class="list-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> id
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> name
+                </label>
+              </div>
+            </ul>
+          </div>
+      </div>
+      </uib-accordion>
+    </div>
 
-  <gh-visualization val="data"></gh-visualization>
+    <div class="col-md-8 searchRight">
+      <div class="text-right">
+        <button ng-click="goDataset(1)" type="button" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Valider les données</button>
+      </div>
 
+      Informations sur le jeu de données
 
-</body>
+      blabla...
+    </div>
+  </div>
 
-</html>
-
-
+</div>
