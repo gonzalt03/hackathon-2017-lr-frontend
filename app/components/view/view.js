@@ -45,13 +45,10 @@ angular.module('frontProjectApp')
 
       $scope.select = function () {
         leafletData.getMap().then(function (map) {
-          console.log(map)
-          if ($scope.worldLayer) {
-            map.removeLayer($scope.worldLayer);
-          }
+          console.log(map);
           var url = "ca_borne.kml";
           console.log(url);
-          $scope.rectLayer = omnivore.kml(url).on('ready', function (layer) {
+          $scope.rectLayer = omnivore.kml(url).on('ready', function () {
 
             this.eachLayer(function (marker) {
                 marker.setIcon(L.AwesomeMarkers.icon({
