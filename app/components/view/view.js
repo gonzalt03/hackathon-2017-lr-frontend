@@ -5,7 +5,7 @@
 'use strict';
 
 
-angular.module('frontProjectApp')
+angular.module('frontProjectApp', ['leaflet-directive'])
   .controller('ViewCtrl', function ($scope) {
 
 
