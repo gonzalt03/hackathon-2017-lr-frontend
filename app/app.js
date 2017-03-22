@@ -17,7 +17,7 @@ angular
     'ngTouch',
     'ui.bootstrap',
     'ui.bootstrap.tpls',
-    '720kb.socialshare'
+    '720kb.socialshare',
     'ui.bootstrap.tpls',
     'leaflet-directive'
   ])
