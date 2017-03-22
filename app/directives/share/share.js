@@ -7,6 +7,6 @@ angular.module('frontProjectApp').directive('share', function () {
     controller: function($scope){
       $scope.url = document.URL;
     },
-    templateUrl: 'directives/share.html'
+    templateUrl: 'directives/share/share.html'
   }
 });
