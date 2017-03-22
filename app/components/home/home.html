@@ -1,12 +1,10 @@
-<div class="col-md-8 col-md-offset-2">
-  <div class="row">
-    <h3 id='text' class="animated fadeInDown">Tout commence par une recherche...</h3>
-  </div>
+<div class="col-md-8 col-md-offset-2 home">
 
-  <div class="row">
+  <div class="row search">
+    <h3 class="animated fadeInDown">Tout commence par une recherche...</h3>
     <form class="form-horizontal col-md-8 col-md-offset-2 has-feedback" role="form">
       <div class="form-group">
-        <input ng-model="query" type="text" class="form-control" placeholder="Parking...">
+        <input ng-model="query" type="text" class="form-control input-lg" placeholder="Que cherchez-vous ?">
         <i class="glyphicon glyphicon-search form-control-feedback"></i>
       </div>
     </form>
@@ -16,13 +14,21 @@
 
     <uib-tabset active="active">
       <uib-tab index="0" heading="Plus regardées">
-        <div ng-repeat="aCard in cardShowed" class="card col-xs-4">
-          <h1>{{aCard.title}}</h1>
+        <div ng-repeat="aCard in cardShowed">
+          <div class="animated fadeIn card col-xs-4" style="{{timePicture($index)}}">
+            <h1>{{aCard.title}}</h1>
+            <p><i class="fa fa-refresh" aria-hidden="true"></i> {{aCard.frequence}}</p>
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{aCard.location}}</p>
+          </div>
         </div>
       </uib-tab>
       <uib-tab index="1" heading="Plus téléchargées">
-        <div ng-repeat="aCard in cardDownloaded" class="card col-xs-4">
-          <h1>{{aCard.title}}</h1>
+        <div ng-repeat="aCard in cardDownloaded">
+          <div class="animated fadeIn card col-xs-4" style="{{timePicture($index)}}">
+            <h1>{{aCard.title}}</h1>
+            <p><i class="fa fa-refresh" aria-hidden="true"></i> {{aCard.frequence}}</p>
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{aCard.location}}</p>
+          </div>
         </div>
       </uib-tab>
     </uib-tabset>

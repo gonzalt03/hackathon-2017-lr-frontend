@@ -11,15 +11,45 @@ angular.module('frontProjectApp')
   .controller('HomeCtrl', function ($scope) {
 
     $scope.cardShowed = [
-      {title : "Mon titre 1"},
-      {title : "Mon titre 2"},
-      {title : "Mon titre 3"}
+      {
+        title: "SIGNALISATION LUMINEUSE – SUPPORT",
+        frequence: "Quotidienne",
+        location: "La Rochelle"
+      },
+      {
+        title: "SIGNALISATION LUMINEUSE – SUPPORT",
+        frequence: "Quotidienne",
+        location: "La Rochelle"
+      },
+      {
+        title: "SIGNALISATION LUMINEUSE – SUPPORT",
+        frequence: "Quotidienne",
+        location: "La Rochelle"
+      }
     ];
 
     $scope.cardDownloaded = [
-      {title : "Mon titre 1"},
-      {title : "Mon titre 2"},
-      {title : "Mon titre 3"}
+      {
+        title: "SIGNALISATION LUMINEUSE – SUPPORT",
+        frequence: "Quotidienne",
+        location: "La Rochelle"
+      },
+      {
+        title: "SIGNALISATION LUMINEUSE",
+        frequence: "Quotidienne",
+        location: "La Rochelle"
+      },
+      {
+        title: "SIGNALISATION THOMAS – SUPPORT",
+        frequence: "Quotidienne",
+        location: "La Rochelle"
+      }
     ];
+
+
+    $scope.timePicture = function (time) {
+      var ti = parseFloat(200*time);
+      return "-webkit-animation-delay: "+ti+"ms;animation-delay: "+ti+"ms;";
+    };
 
   });
