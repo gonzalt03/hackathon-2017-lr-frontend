@@ -10,8 +10,7 @@
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
     "angular-bootstrap": "^2.5.0",
-    "animate.css": "^3.5.2",
-    "angular-socialshare": "angularjs-socialshare#^2.3.7"
+    "angular-socialshare": "angularjs-socialshare#^2.3.7",
     "animate.css": "^3.5.2",
     "angular-leaflet-directive": "angular-leaflet#^0.10.0",
     "drmonty-leaflet-awesome-markers": "^2.0.2",
