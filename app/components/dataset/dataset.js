@@ -8,6 +8,7 @@
 angular.module('frontProjectApp')
   .controller('DatasetCtrl', function ($scope) {
 
+    $().DataTable();
 
 
 
