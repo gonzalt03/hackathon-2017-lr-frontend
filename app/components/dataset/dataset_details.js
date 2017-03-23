@@ -118,6 +118,7 @@ angular.module('frontProjectApp')
         });
 
     }
+
     function nbEleveParClassePie() {
 
       Request.get('http://localhost:3000/api-get-data?url=nb_enfants')
@@ -172,56 +173,47 @@ angular.module('frontProjectApp')
 
     $scope.addComment = function (name, comment) {
       $scope.comments.push({
-        author : name,
-        comment : comment
+        author: name,
+        comment: comment
       });
       $scope.message = $scope.author = '';
     };
 
-    angular.extend($scope, {
-      defaults: {
-        scrollWheelZoom: false
-      },
-      la_rochelle: {
-        lat: 46.15,
-        lng: -1.15,
-        zoom: 14
-      }
-    });
 
+    function coordToGPS(coordLamb93) {
+      // need proj4
+      var projection = '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs';
+      var pointTemp=proj4(projection).inverse(coordLamb93);
+      var coordGPS=[];
+      coordGPS[0]=pointTemp[1];
+      coordGPS[1]=pointTemp[0];
+      return coordGPS;
+    };
     $scope.select = function () {
-      leafletData.getMap().then(function (map) {
-        console.log(map);
-        var url = "ca_borne.kml";
-        console.log(url);
-        $scope.rectLayer = omnivore.kml(url).on('ready', function () {
+      var markers = [];
 
-          this.eachLayer(function (marker) {
-              marker.setIcon(L.AwesomeMarkers.icon({
-                prefix: 'fa',
-                icon: 'car',
-                markerColor: 'blue'
-              }))
-            }
-          );
+      Request.get('http://localhost:3000/api-get-data?url=disponibilite_parking')
+        .then(function (dataset) {
+          for (var props in dataset.data) {
+            var GPS = coordToGPS([dataset.data[props].dp_x, dataset.data[props].dp_y])
+            markers.push({lat:GPS[0],lng:GPS[1]});
+          }
+          angular.extend($scope, {
+            defaults: {
+              scrollWheelZoom: false
+            },
+            la_rochelle: {
+              lat: 46.15,
+              lng: -1.15,
+              zoom: 14
+            },
+            markers : markers
+          });
         })
-          .addTo(map);
-        console.log($scope.rectLayer)
-
-        leafletData.getMap().then(function (map) {
-          console.log(map);
-          var url = "tr_piste_cyclable.kml";
-          console.log(url);
-          $scope.rectLayer = omnivore.kml(url).on('ready', function () {
-
-          })
-            .addTo(map);
-          console.log($scope.rectLayer)
-        })
-      });
     };
 
 
     $scope.select();
 
-  });
+  })
+;
