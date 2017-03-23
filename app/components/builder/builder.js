@@ -59,12 +59,12 @@ angular.module('frontProjectApp')
     cartoParking();
 
     function cartoParking() {
-        let cleAPI="RCX5bwVyOwITdtzj";
-        let url="https://opendata.larochelle.fr/webservice/?service=getData&db=stationnement&table=disponibilite_parking&format=json&key="+cleAPI;
+        var cleAPI="RCX5bwVyOwITdtzj";
+        var url="https://opendata.larochelle.fr/webservice/?service=getData&db=stationnement&table=disponibilite_parking&format=json&key="+cleAPI;
         Request.get(url)
           .then(function (d) {
             //console.log(d.data.opendata.answer.data);
-            let tabParking=d.data.opendata.answer.data;
+            var tabParking=d.data.opendata.answer.data;
             console.log(tabParking);
             $scope.tabParking = tabParking;
         }, function (error) {
@@ -76,8 +76,8 @@ angular.module('frontProjectApp')
     function coordToGPS(coordLamb93) {
         // need proj4
         var projection = '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs';
-        pointTemp=proj4(projection).inverse(coordL93);
-	    let coordGPS=[];
+        var pointTemp=proj4(projection).inverse(coordL93);
+	    var coordGPS=[];
 	    coordGPS[0]=pointTemp[1];
 	    coordGPS[1]=pointTemp[0];
         return coordGPS;
@@ -192,7 +192,7 @@ angular.module('frontProjectApp')
     $scope.select = function () {
       leafletData.getMap().then(function (map) {
         console.log(map);
-        var url = "ca_borne.kml";
+        var url = "slt_support.kml";
         console.log(url);
         $scope.rectLayer = omnivore.kml(url).on('ready', function () {
 
