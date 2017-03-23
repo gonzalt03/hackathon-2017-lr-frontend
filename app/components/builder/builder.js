@@ -76,7 +76,11 @@ angular.module('frontProjectApp')
     function coordToGPS(coordLamb93) {
         // need proj4
         var projection = '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs';
-        return proj4(projection).inverse(coordLamb93);
+        pointTemp=proj4(projection).inverse(coordL93);
+	    let coordGPS=[];
+	    coordGPS[0]=pointTemp[1];
+	    coordGPS[1]=pointTemp[0];
+        return coordGPS;
     };
 
     function nbEleveParClasseHisto() {
