@@ -22,7 +22,8 @@ angular
     'ui.bootstrap.tpls',
     'leaflet-directive',
     'ui.bootstrap.tpls',
-    'nvd3'
+    'nvd3',
+    'datatables'
   ])
 
 
