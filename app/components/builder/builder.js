@@ -163,19 +163,16 @@ angular.module('frontProjectApp')
 
     $scope.results = [
       {
-        title: "SIGNALISATION LUMINEUSE – SUPPORT",
-        frequence: "Quotidienne",
-        location: "La Rochelle"
+        title: "Pistes cyclables",
+        frequence: "Occasionnelle",
+        location: "La Rochelle",
+        champs:["id","lat","lng","datetime"]
       },
       {
-        title: "SIGNALISATION LUMINEUSE",
-        frequence: "Quotidienne",
-        location: "La Rochelle"
-      },
-      {
-        title: "SIGNALISATION THOMAS – SUPPORT",
-        frequence: "Quotidienne",
-        location: "La Rochelle"
+        title: "Feux tricolores",
+        frequence: "Occasionnelle",
+        location: "La Rochelle",
+        champs:["id","lat","lng","datetime","mark"]
       }
     ];
     angular.extend($scope, {
@@ -185,7 +182,8 @@ angular.module('frontProjectApp')
       la_rochelle: {
         lat: 46.15,
         lng: -1.15,
-        zoom: 14
+        zoom: 14,
+        autoDiscover: true
       }
     });
 
@@ -210,7 +208,7 @@ angular.module('frontProjectApp')
       });
 
       leafletData.getMap().then(function (map) {
-        console.log(map);
+        map.locate({setView : true});
         var url = "tr_piste_cyclable.kml";
         console.log(url);
         $scope.rectLayer = omnivore.kml(url).on('ready', function () {
@@ -226,6 +224,18 @@ angular.module('frontProjectApp')
         })
           .addTo(map);
         console.log($scope.rectLayer)
+      });
+      leafletData.getMap('map').then(function (map) {
+        map.locate({setView: true, maxZoom: 16, watch: true, enableHighAccuracy: true});
+        map.on('locationfound', function (e) {
+          console.log(e.latlng, e.accuracy);
+          markers.push({lat:e.latlng.lat,lng:e.latlng.lng,icon: {
+            type: 'awesomeMarker',
+            prefix: 'fa',
+            icon: 'user',
+            markerColor: 'red'
+          }});
+        })
       });
     };
 

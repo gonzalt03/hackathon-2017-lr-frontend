@@ -37,10 +37,10 @@
   padding: 20px;
   margin-bottom: 30px;
   border-radius: 3px;
-  background: url('../images/Background.png') no-repeat center fixed;
+  background: url('../images/Background.png') no-repeat bottom fixed;
   background-size: cover;
   color: white;
-  min-height: 500px;
+  min-height: 350px;
 }
 
 .search .glyphicon{
