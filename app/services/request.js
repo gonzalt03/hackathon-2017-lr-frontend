@@ -12,10 +12,11 @@ angular.module('frontProjectApp')
     };
 
     request.get = function (url) {
-      return $http({
+      var result =  $http({
         method: 'GET',
         url: url
-      })
+      });
+      return result;
     };
 
     request.put = function (url, json) {
