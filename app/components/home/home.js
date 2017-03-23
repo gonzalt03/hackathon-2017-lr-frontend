@@ -18,6 +18,14 @@ angular.module('frontProjectApp')
           .then(function (data) {
             console.log(data.data);
             $scope.resultsRequest = data.data;
+
+            // Ajout parking
+            if(request == 'p' || request == 'pa' || request == 'par' || request == 'park' || request == 'parki' || request == 'parkin'  || request == 'parking'){
+              $scope.resultsRequest.push({
+                type: "formule",
+                description: "Le parking Vieux Port Sud ne contient plus que 75 places"
+              })
+            }
           }, function (error) {
             console.log(error);
           });
