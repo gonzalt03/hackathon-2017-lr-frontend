@@ -20,10 +20,10 @@ angular.module('frontProjectApp')
             $scope.resultsRequest = data.data;
 
             // Ajout parking
-            if(request == 'p' || request == 'pa' || request == 'par' || request == 'park' || request == 'parki' || request == 'parkin'  || request == 'parking'){
+            if (request == 'p' || request == 'pa' || request == 'par' || request == 'park' || request == 'parki' || request == 'parkin' || request == 'parking') {
               $scope.resultsRequest.push({
                 type: "formule",
-                description: "Le parking Vieux Port Sud ne contient plus que 75 places"
+                description: "Parking Vieux Port Sud reste 75 places"
               })
             }
           }, function (error) {
@@ -34,62 +34,46 @@ angular.module('frontProjectApp')
 
     $scope.cardShowed = [
       {
-        title: "SIGNALISATION LUMINEUSE – SUPPORT",
+        title: "Statistiques sur la disponibilité des parkings par heures",
         frequence: "Quotidienne",
-        location: "La Rochelle"
+        location: "La Rochelle",
+        url: "/dataset/disponibilite_parking_heure"
       },
       {
-        title: "SIGNALISATION LUMINEUSE – SUPPORT",
+        title: "Statistiques sur la disponibilité des parkings par jour",
         frequence: "Quotidienne",
-        location: "La Rochelle"
+        location: "La Rochelle",
+        url: "/dataset/disponibilite_parking_jour"
       },
       {
-        title: "SIGNALISATION LUMINEUSE – SUPPORT",
-        frequence: "Quotidienne",
-        location: "La Rochelle"
+        title: "Le schéma de cohérence territoriale, document d'urbanisme",
+        frequence: "Unique",
+        location: "Territoire",
+        url: "/dataset/limite_scot"
       }
     ];
 
     $scope.cardDownloaded = [
       {
-        title: "SIGNALISATION LUMINEUSE – SUPPORT",
+        title: "Statistiques sur la disponibilité des parkings par jour",
         frequence: "Quotidienne",
-        location: "La Rochelle"
+        location: "La Rochelle",
+        url: "/dataset/disponibilite_parking_jour"
       },
       {
-        title: "SIGNALISATION LUMINEUSE",
+        title: "Statistiques sur la disponibilité des parkings par heures",
         frequence: "Quotidienne",
-        location: "La Rochelle"
+        location: "La Rochelle",
+        url: "/dataset/disponibilite_parking_heure"
       },
       {
-        title: "SIGNALISATION THOMAS – SUPPORT",
-        frequence: "Quotidienne",
-        location: "La Rochelle"
+        title: "Le schéma de cohérence territoriale, document d'urbanisme",
+        frequence: "Unique",
+        location: "Territoire",
+        url: "/dataset/limite_scot"
       }
     ];
 
-    /**$scope.resultsRequest = [
-     {
-       id: 1,
-       name: "SIGNALISATION LUMINEUSE – SUPPORT",
-       type: "dataset"
-     },
-     {
-       id: 2,
-       name: "STATIONNEMENT – PLACE EN ZONE BLEUE",
-       type: "dataset"
-     },
-     {
-       id: 3,
-       name: "STATIONNEMENT – PLACES DISPONIBLES EN TEMPS RÉEL",
-       type: "dataset"
-     },
-     {
-       id: 4,
-       name: "Parking Grande horloge, reste 15 places",
-       type: "formule"
-     }
-     ];*/
 
     $scope.search = function (query) {
       $location.path('/search/' + query);
@@ -97,7 +81,11 @@ angular.module('frontProjectApp')
 
     $scope.goDataset = function (element) {
       $location.path('/dataset/' + element.identifier);
-    }
+    };
+
+    $scope.goDatasetUrl = function (url) {
+      $location.path(url);
+    };
 
     $scope.iconDataType = function (data) {
       switch (data.type) {
