@@ -16,30 +16,22 @@
       </div>
     </div>
 
-    <div class="col-md-8 searchRight">
-      <div class="text-right">
-        <button type="button" class="btn btn-default"><i class="fa fa-cart-plus" aria-hidden="true"></i> Ajouter à ma
-          vue
-        </button>
-        <button ng-click="goDataset(identifierSelected)" type="button" class="btn btn-primary"><i class="fa fa-eye"
-                                                                                 aria-hidden="true"></i> Voir l'ensemble
-          des données
-        </button>
-      </div>
+    <div class="col-md-4">
+      <ul class="list-group content" ng-repeat="(key, value) in datasetMeta">
+        <li class="list-group-item" ng-if="value != '' && key != 'data' && key != 'header'"><h4>{{key}}</h4><br>{{value}}
+        </li>
+      </ul>
+    </div>
 
-      <div class="row listMeta">
-        <div class="col-md-6">
-          <ul class="list-group" ng-repeat="(key, value) in datasetMeta">
-            <li class="list-group-item" ng-if="value != '' && key != 'data' && key != 'header'"><h4>{{key}}</h4><br>{{value}}
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <leaflet lf-center="la_rochelle" markers="markers" width="100%" height="480px"></leaflet>
-          <br>
-          TABLE
-        </div>
-      </div>
+    <div class="col-md-4 sidebar">
+      <button type="button" class="btn btn-default"><i class="fa fa-cart-plus" aria-hidden="true"></i> Ajouter à ma
+        vue
+      </button>
+      <button ng-click="goDataset(identifierSelected)" type="button" class="btn btn-primary"><i class="fa fa-eye"
+                                                                                                aria-hidden="true"></i>
+        Voir les données
+      </button>
+      <leaflet lf-center="la_rochelle" markers="markers" width="100%" height="480px"></leaflet>
 
     </div>
   </div>
