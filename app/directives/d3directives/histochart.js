@@ -15,6 +15,7 @@ angular.module('frontProjectApp')
           chart: {
             type: 'historicalBarChart',
             height: 450,
+            width:750,
             margin : {
               top: 20,
               right: 20,
