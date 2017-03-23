@@ -6,27 +6,18 @@
 
 
 angular.module('frontProjectApp')
-  .controller('SearchCtrl', function ($scope, $routeParams, $location) {
+  .controller('SearchCtrl', function ($scope, $routeParams, $location, GlobalService, Request) {
 
     $scope.query = $routeParams.query;
 
-    $scope.results = [
-      {
-        title: "SIGNALISATION LUMINEUSE – SUPPORT",
-        frequence: "Quotidienne",
-        location: "La Rochelle"
-      },
-      {
-        title: "SIGNALISATION LUMINEUSE",
-        frequence: "Quotidienne",
-        location: "La Rochelle"
-      },
-      {
-        title: "SIGNALISATION THOMAS – SUPPORT",
-        frequence: "Quotidienne",
-        location: "La Rochelle"
-      }
-    ];
+    Request.get(GlobalService.searchElement + "?limit=-1&tag="+$scope.query)
+      .then(function(data) {
+        console.log(data.data);
+        $scope.results = data.data;
+      }, function(error) {
+        console.log(error);
+      });
+
 
     $scope.goDataset = function (id) {
       $location.path('/dataset/' + id);

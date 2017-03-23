@@ -8,9 +8,6 @@
 angular.module('frontProjectApp')
   .controller('DatasetCtrl', function ($scope) {
 
-    $().DataTable();
-
-
       $scope.afficherCommentaires = [
           {
               auteur: "Personne 1 ",

@@ -25,10 +25,17 @@ angular
   ])
 
 
+  .factory('GlobalService', function() {
+    var urlAPI = "http://vps.onefox.fr:3000/";
+    return {
+      getInfoJeuData : urlAPI + "api-get-data",
+      searchElement : urlAPI + "get-id",
+      urlAPI : urlAPI
+    };
+  })
 
 
-
-  .config(['socialshareConfProvider', function(socialshareConfProvider) {
+  .config(['socialshareConfProvider', function (socialshareConfProvider) {
 
     socialshareConfProvider.configure([
       {
