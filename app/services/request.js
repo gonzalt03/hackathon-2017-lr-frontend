@@ -12,8 +12,6 @@ angular.module('frontProjectApp')
     };
 
     request.get = function (url) {
-      console.log("Get function");
-      console.log(url);
       var result =  $http({
         method: 'GET',
         url: url
