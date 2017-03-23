@@ -11,38 +11,8 @@ angular.module('frontProjectApp')
     $scope.myData = sinAndCos();
 
     $scope.myTitle2 = 'PIECHART';
-    $scope.myData2 = [
-      {
-        key: "One",
-        y: 5
-      },
-      {
-        key: "Two",
-        y: 2
-      },
-      {
-        key: "Three",
-        y: 9
-      },
-      {
-        key: "Four",
-        y: 7
-      },
-      {
-        key: "Five",
-        y: 4
-      },
-      {
-        key: "Six",
-        y: 3
-      },
-      {
-        key: "Seven",
-        y: .5
-      }
-    ];
 
-    $scope.myTitle3 = 'Budget Prévisionnel 2017';
+    $scope.myTitle3 = 'Répartition des élèves par classe';
 
 
     /*Random Data Generator */
@@ -84,12 +54,13 @@ angular.module('frontProjectApp')
       ];
     };
 
-    bp2017();
-    function bp2017() {
+    nbEleveParClasseHisto();
+    nbEleveParClassePie();
 
-        Request.get(GlobalService.urlAPI + 'api-get-data?url=nb_enfants')
+    function nbEleveParClasseHisto() {
+
+        Request.get('http://localhost:3000/api-get-data?url=nb_enfants')
           .then(function (d) {
-            console.log(d);
             var classe = [];
 
             var stat = [];
@@ -98,7 +69,7 @@ angular.module('frontProjectApp')
             for (var i = 0; i < d.data.length; i++) {
               if (!classe.includes(d.data[i].sco_section)) {
                 classe.push(d.data[i].sco_section);
-                stat[j] = {classe: d.data[i].sco_section, nb_eleves: 0};
+                stat[j] = {number: j, classe: d.data[i].sco_section, nb_eleves: 0};
                 j++;
               }
             }
@@ -112,23 +83,52 @@ angular.module('frontProjectApp')
                 }
                 j++;
               }
-
               //stat[d.data[i].sco_section].nb_eleves += parseInt(d.data[i].sco_nombre);
               //stat[d.data[i].sco_section].nb_classe ++;
 
             }
-            console.log(stat);
-
             $scope.myData3 = [
               {
                 "key": "Quantity",
                 "bar": true,
                 "values": stat
               }];
+          }, function (error) {
+            console.log(error);
+          });
 
-           // resolve(stat);
+    };
+    function nbEleveParClassePie() {
 
+        Request.get('http://localhost:3000/api-get-data?url=nb_enfants')
+          .then(function (d) {
+            var classe = [];
 
+            var stat = [];
+            var j = 0;
+
+            for (var i = 0; i < d.data.length; i++) {
+              if (!classe.includes(d.data[i].sco_section)) {
+                classe.push(d.data[i].sco_section);
+                stat[j] = {key: d.data[i].sco_section, y: 0};
+                j++;
+              }
+            }
+            for (var i = 0; i < d.data.length; i++) {
+              var j = 0;
+              var trouve = false;
+              while (j < stat.length && !trouve) {
+                if (stat[j].key == d.data[i].sco_section) {
+                  trouve = true;
+                  stat[j].y += parseInt(d.data[i].sco_nombre);
+                }
+                j++;
+              }
+              //stat[d.data[i].sco_section].nb_eleves += parseInt(d.data[i].sco_nombre);
+              //stat[d.data[i].sco_section].nb_classe ++;
+
+            }
+            $scope.myData2 = stat;
           }, function (error) {
             console.log(error);
           });
