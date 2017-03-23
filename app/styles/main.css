@@ -32,13 +32,15 @@
 
 }
 
-.home .search{
+
+.home .search {
   padding: 20px;
   margin-bottom: 30px;
   border-radius: 3px;
   background: url('../images/Background.png') no-repeat center fixed;
   background-size: cover;
   color: white;
+  min-height: 500px;
 }
 
 .search .glyphicon{
