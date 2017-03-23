@@ -5,7 +5,7 @@
 'use strict';
 
 angular.module('frontProjectApp')
-  .controller('DatasetDetailsCtrl', function ($uibModal, $scope, GlobalService, Request, $routeParams) {
+  .controller('DatasetDetailsCtrl', function ($scope, GlobalService, Request, $routeParams) {
 
     var id = $routeParams.id;
 
@@ -17,12 +17,12 @@ angular.module('frontProjectApp')
         console.log(error);
       });
 
-    Request.get(GlobalService.getInfoJeuData + "?url="+id)
-      .then(function(data) {
+    Request.get(GlobalService.getInfoJeuData + "?url=" + id)
+      .then(function (data) {
         console.log(data.data);
         $scope.dataset.data = data.data;
         $scope.dataset.header = Object.keys(data.data[0]);
-      }, function(error) {
+      }, function (error) {
         console.log(error);
       });
 
@@ -178,5 +178,59 @@ angular.module('frontProjectApp')
       });
       $scope.message = $scope.author = '';
     };
+
+    angular.extend($scope, {
+      defaults: {
+        scrollWheelZoom: false
+      },
+      la_rochelle: {
+        lat: 46.15,
+        lng: -1.15,
+        zoom: 14
+      }
+    });
+
+    $('#exampleModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('whatever') // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this)
+      modal.find('.modal-title').text('Nouveau message')
+    })
+    $scope.select = function () {
+      leafletData.getMap().then(function (map) {
+        console.log(map);
+        var url = "ca_borne.kml";
+        console.log(url);
+        $scope.rectLayer = omnivore.kml(url).on('ready', function () {
+
+          this.eachLayer(function (marker) {
+              marker.setIcon(L.AwesomeMarkers.icon({
+                prefix: 'fa',
+                icon: 'car',
+                markerColor: 'blue'
+              }))
+            }
+          );
+        })
+          .addTo(map);
+        console.log($scope.rectLayer)
+
+        leafletData.getMap().then(function (map) {
+          console.log(map);
+          var url = "tr_piste_cyclable.kml";
+          console.log(url);
+          $scope.rectLayer = omnivore.kml(url).on('ready', function () {
+
+          })
+            .addTo(map);
+          console.log($scope.rectLayer)
+        })
+      });
+    };
+
+
+    $scope.select();
 
   });

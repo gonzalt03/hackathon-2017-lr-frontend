@@ -8,9 +8,11 @@
   <div class="col-md-12 row">
 
     <div class="text-right">
-      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#alertModal"><i
-        class="fa fa-exclamation-circle" aria-hidden="true"></i> Signaler un problème
+      <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Signaler
+        un problème
       </button>
+        </div>
     </div>
 
     <uib-tabset active="active">
@@ -57,7 +59,7 @@
         <table datatable="ng" class="row-border hover" cellpadding="0" cellspacing="0" border="0" id="datatableLink">
           <thead>
           <tr ng-repeat="header in dataset.header">
-            <th>{{header}}</th>
+              <th>{{header}}</th>
           </tr>
           </thead>
           <tbody>
@@ -68,10 +70,11 @@
         </table>
 
       </uib-tab>
-      <uib-tab index="2" heading="Cartographie">
-        <p>Bablfdsa</p>
 
+      <uib-tab index="2" heading="Cartographie">
+        <leaflet lf-center="la_rochelle" markers="markers" width="100%" height="480px"></leaflet>
       </uib-tab>
+
       <uib-tab index="3" heading="Visualisation graphique">
         <div class="row">
           <linechart mytitle="myTitle" data="myData"></linechart>
@@ -108,6 +111,8 @@
   </div>
 
 </div>
+
+
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
