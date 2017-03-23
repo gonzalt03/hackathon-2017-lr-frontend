@@ -183,10 +183,10 @@ angular.module('frontProjectApp')
     function coordToGPS(coordLamb93) {
       // need proj4
       var projection = '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs';
-      var pointTemp=proj4(projection).inverse(coordLamb93);
-      var coordGPS=[];
-      coordGPS[0]=pointTemp[1];
-      coordGPS[1]=pointTemp[0];
+      var pointTemp = proj4(projection).inverse(coordLamb93);
+      var coordGPS = [];
+      coordGPS[0] = pointTemp[1];
+      coordGPS[1] = pointTemp[0];
       return coordGPS;
     };
     $scope.select = function () {
@@ -196,20 +196,31 @@ angular.module('frontProjectApp')
         .then(function (dataset) {
           for (var props in dataset.data) {
             var GPS = coordToGPS([dataset.data[props].dp_x, dataset.data[props].dp_y])
-            markers.push({lat:GPS[0],lng:GPS[1]});
+            markers.push(
+              {
+                lat: GPS[0],
+                lng: GPS[1],
+                icon: {
+                  type: 'awesomeMarker',
+                  prefix: 'fa',
+                  icon: 'car',
+                  markerColor: 'green'
+                },
+                message:dataset.data[props].dp_place_disponible+" places disponibles au parking "+ dataset.data[props].dp_libelle
+              });
           }
-          angular.extend($scope, {
-            defaults: {
-              scrollWheelZoom: false
-            },
-            la_rochelle: {
-              lat: 46.15,
-              lng: -1.15,
-              zoom: 14
-            },
-            markers : markers
-          });
         })
+      angular.extend($scope, {
+        defaults: {
+          scrollWheelZoom: false
+        },
+        la_rochelle: {
+          lat: 46.15,
+          lng: -1.15,
+          zoom: 13
+        },
+        markers: markers
+      });
     };
 
 
