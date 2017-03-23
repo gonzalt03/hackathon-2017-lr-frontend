@@ -11,10 +11,10 @@
     "angular-touch": "^1.4.0",
     "angular-bootstrap": "^2.5.0",
     "animate.css": "^3.5.2",
+    "angular-nvd3": "^1.0.9",
     "datatables.net": "^2.1.1",
     "datatables.net-dt": "^3.2.2",
     "angular-socialshare": "angularjs-socialshare#^2.3.7",
-    "animate.css": "^3.5.2",
     "angular-leaflet-directive": "angular-leaflet#^0.10.0",
     "drmonty-leaflet-awesome-markers": "^2.0.2",
     "leaflet-omnivore": "0.3.3"
