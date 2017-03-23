@@ -8,7 +8,17 @@
  * Controller of the frontProjectApp
  */
 angular.module('frontProjectApp')
-  .controller('HomeCtrl', function ($scope, $location) {
+  .controller('HomeCtrl', function ($scope, $location, GlobalService, Request) {
+
+    console.log("start");
+    console.log(GlobalService.urlRequest);
+    Request.get(GlobalService.urlRequest)
+      .then(function(data) {
+        console.log(data);
+      }, function(error) {
+        console.log(error);
+    });
+
 
     $scope.cardShowed = [
       {
