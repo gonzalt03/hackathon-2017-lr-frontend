@@ -22,34 +22,25 @@ angular.module('frontProjectApp')
               left: 50
             },
             x: function(d){
-              console.log(d);
-              return d.classe;},
+              return d.number;},
             y: function(d){
-              console.log(d);
               return d.nb_eleves;},
             showValues: true,
-            valueFormat: function(d){
-              return d3.format(',.1f')(d);
-            },
             duration: 100,
             xAxis: {
-              axisLabel: 'X Axis',
+              axisLabel: 'Classes',
               tickFormat: function(d) {
-                return d3.time.format('%x')(new Date(d))
+                return scope.data[0].values[d].classe;
+
               },
-              rotateLabels: 30,
-              showMaxMin: false
+              rotateLabels: 10,
+              showMaxMin: true
             },
             yAxis: {
-              axisLabel: 'Y Axis',
+              axisLabel: "Nombre d'élève",
               axisLabelDistance: -10,
               tickFormat: function(d){
-                return d3.format(',.1f')(d);
-              }
-            },
-            tooltip: {
-              keyFormatter: function(d) {
-                return d3.time.format('%x')(new Date(d));
+                return d;
               }
             },
             zoom: {
