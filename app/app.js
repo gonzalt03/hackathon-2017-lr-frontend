@@ -10,6 +10,7 @@
  */
 angular
   .module('frontProjectApp', [
+    'ngMaterial',
     'ngAnimate',
     'ngResource',
     'ngRoute',
