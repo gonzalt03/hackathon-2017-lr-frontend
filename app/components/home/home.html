@@ -17,7 +17,7 @@
     <uib-tabset active="active">
       <uib-tab index="0" heading="Plus regardées">
         <div ng-repeat="aCard in cardShowed">
-          <div ng-click="goDataset(aCard.id)" class="animated fadeIn card col-xs-4" style="{{timePicture($index)}}">
+          <div ng-click="goDatasetUrl(aCard.url)" class="animated fadeIn card col-xs-4" style="{{timePicture($index)}}">
             <h1>{{aCard.title}}</h1>
             <p><i class="fa fa-refresh" aria-hidden="true"></i> {{aCard.frequence}}</p>
             <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{aCard.location}}</p>
