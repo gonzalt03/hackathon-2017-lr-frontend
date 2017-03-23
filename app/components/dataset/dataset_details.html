@@ -8,11 +8,9 @@
   <div class="col-md-12 row">
 
     <div class="text-right">
-      <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
       <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Signaler
         un problème
       </button>
-        </div>
     </div>
 
     <uib-tabset active="active">
@@ -20,7 +18,7 @@
 
         <div class="col-md-12 listMeta">
           <ul class="list-group" ng-repeat="(key, value) in dataset">
-            <li class="list-group-item" ng-if="value != ''"><h4>{{key}}</h4><br>{{value}}</li>
+            <li class="list-group-item" ng-if="value != '' && key != 'data' && key != 'header'"><h4>{{key}}</h4><br>{{value}}</li>
           </ul>
         </div>
 
