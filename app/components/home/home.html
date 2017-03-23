@@ -4,11 +4,11 @@
     <h3 class="animated fadeInDown">Tout commence par une recherche...</h3>
     <form ng-submit="search(query)" class="form-horizontal col-md-8 col-md-offset-2 has-feedback" role="form">
       <div class="form-group">
-        <input ng-model="query" type="text" class="form-control input-lg" placeholder="Que cherchez-vous ?">
+        <input ng-model="query" ng-change="refreshRequest(query)" type="text" class="form-control input-lg" placeholder="Que cherchez-vous ?">
         <i class="glyphicon glyphicon-search form-control-feedback"></i>
       </div>
-        <div ng-if="query.length" ng-repeat="result in resultsRequest | filter:query">
-          <div ng-click="goDataset(result.id)" class="result"><i class="fa" ng-class="iconDataType(result)" aria-hidden="true"></i> {{result.name}}</div>
+        <div ng-if="query.length" ng-repeat="result in resultsRequest">
+          <div ng-click="goDataset(result)" class="result"><i class="fa" ng-class="iconDataType(result)" aria-hidden="true"></i> {{result.description}}</div>
         </div>
     </form>
   </div>
