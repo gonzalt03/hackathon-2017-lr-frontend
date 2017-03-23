@@ -1,6 +1,6 @@
 <div class="row searchPage">
 
-  <div class="col-md-12">
+  <div class="col-md-12 searchHeader">
     <h2>Votre recherche</h2>
     <h1>{{query}}</h1>
   </div>
@@ -9,9 +9,9 @@
     <div class="col-md-4 searchLeft">
       <div ng-repeat="aCard in results">
         <div class="animated fadeIn card" style="{{timePicture($index)}}">
-          <h1>{{aCard.title}}</h1>
-          <p><i class="fa fa-refresh" aria-hidden="true"></i> {{aCard.frequence}}</p>
-          <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{aCard.location}}</p>
+          <h1>{{aCard.description}}</h1>
+          <p><i class="fa fa-refresh" aria-hidden="true"></i> {{aCard.modified}}</p>
+          <p><i class="fa fa-building-o" aria-hidden="true"></i> {{aCard.property}}</p>
         </div>
       </div>
     </div>

@@ -1,30 +1,31 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
-    <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css" />
-    <link rel="stylesheet" href="bower_components/datatables.net-dt/css/jquery.dataTables.css" />
-    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
-    <!-- endbower -->
-    <link rel="stylesheet" href="styles/font-awesome.min.css" />
-    <link rel="stylesheet" href="bower_components/drmonty-leaflet-awesome-markers/css/leaflet.awesome-markers.css" />
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-  </head>
-  <body ng-app="frontProjectApp">
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+  <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css" />
+  <link rel="stylesheet" href="bower_components/datatables.net-dt/css/jquery.dataTables.css" />
+  <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
+  <!-- endbower -->
+  <link rel="stylesheet" href="styles/font-awesome.min.css"/>
+  <link rel="stylesheet" href="bower_components/drmonty-leaflet-awesome-markers/css/leaflet.awesome-markers.css"/>
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+</head>
+<body ng-app="frontProjectApp">
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
 
     <!-- Add your site or application content here -->
     <div class="header">
@@ -70,6 +71,8 @@
     <div class="footer">
       <div class="container">
         <p>Made with <span class="glyphicon glyphicon-heart"></span> by amicones</p>
+        <br>
+        <img src="images/logo_cda.jpg" width="200px"/>
       </div>
     </div>
 
@@ -112,6 +115,7 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
 
         <script src="app.js"></script>
+        <script src="services/request.js"></script>
         <script src="components/home/home.js"></script>
         <script src="components/search/search.js"></script>
         <script src="components/dataset/dataset.js"></script>
@@ -120,6 +124,8 @@
         <script src="components/view/view.js"></script>
         <script src="directives/share/share.js"></script>
         <script src="directives/d3directives/linechart.js"></script>
+        <script src="directives/d3directives/piechart.js"></script>
+        <script src="directives/d3directives/histochart.js"></script>
 
         <!-- endbuild -->
 
