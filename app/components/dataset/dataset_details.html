@@ -57,7 +57,7 @@
         <table datatable="ng" class="row-border hover" cellpadding="0" cellspacing="0" border="0" id="datatableLink">
           <thead>
           <tr ng-repeat="header in dataset.header">
-              <th>{{header}}</th>
+            <th>{{header}}</th>
           </tr>
           </thead>
           <tbody>
@@ -69,50 +69,12 @@
 
       </uib-tab>
       <uib-tab index="2" heading="Cartographie">
-        <p>Bablfdsa</p>
-
+        <leaflet lf-center="la_rochelle" markers="markers" width="100%" height="480px"></leaflet>
       </uib-tab>
       <uib-tab index="3" heading="Visualisation graphique">
-            <h2>Création d'une vue personnalisée</h2>
-            <h1>Utilisation de 4 jeu de données</h1>
-
-            <div class="col-md-4 searchLeft">
-              <uib-accordion close-others="oneAtATime">
-                <div ng-repeat="result in results">
-                  <div uib-accordion-group class="panel-default" is-open="status.open">
-                    <uib-accordion-heading>
-                      {{result.title}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-                    </uib-accordion-heading>
-                    <ul class="list-group">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> id
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> name
-                        </label>
-                      </div>
-                    </ul>
-                  </div>
-                </div>
-              </uib-accordion>
-            </div>
-
-            <div class="col-md-8 searchRight">
-              <div class="text-right">
-                <button ng-click="goDataset(1)" type="button" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Valider les données</button>
-              </div>
-
-              Informations sur le jeu de données
-
-              blabla...
-            </div>
-
-          <linechart mytitle="myTitle" data="myData"></linechart>
-          <piechart mytitle="myTitle2" data="myData2"></piechart>
-          <histochart mytitle="myTitle3" data="myData3"></histochart>
+        <histochart mytitle="myTitle3" data="myData3"></histochart>
+        <linechart mytitle="myTitle" data="myData"></linechart>
+        <piechart mytitle="myTitle2" data="myData2"></piechart>
       </uib-tab>
 
     </uib-tabset>
