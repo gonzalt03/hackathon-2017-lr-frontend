@@ -21,8 +21,12 @@ angular.module('frontProjectApp')
               bottom: 65,
               left: 50
             },
-            x: function(d){return d[0];},
-            y: function(d){return d[1]/100000;},
+            x: function(d){
+              console.log(d);
+              return d.classe;},
+            y: function(d){
+              console.log(d);
+              return d.nb_eleves;},
             showValues: true,
             valueFormat: function(d){
               return d3.format(',.1f')(d);
