@@ -199,8 +199,8 @@ angular.module('frontProjectApp')
           this.eachLayer(function (marker) {
               marker.setIcon(L.AwesomeMarkers.icon({
                 prefix: 'fa',
-                icon: 'free-code-camp',
-                markerColor: 'green'
+                icon: 'fa-lightbulb-o',
+                markerColor: 'red'
               }))
             }
           );
