@@ -56,6 +56,27 @@ angular.module('frontProjectApp')
 
     nbEleveParClasseHisto();
     nbEleveParClassePie();
+    cartoParking();
+
+    function cartoParking() {
+        let cleAPI="RCX5bwVyOwITdtzj";
+        let url="https://opendata.larochelle.fr/webservice/?service=getData&db=stationnement&table=disponibilite_parking&format=json&key="+cleAPI;
+        Request.get(url)
+          .then(function (d) {
+            //console.log(d.data.opendata.answer.data);
+            let tabParking=d.data.opendata.answer.data;
+            $scope.tabParking = tab;
+        }, function (error) {
+            console.log(error);
+        });
+
+    };
+
+    function coordToGPS(coordLamb93) {
+        // need proj4
+        var projection = '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs';
+        return proj4(projection).inverse(coordLamb93);
+    };
 
     function nbEleveParClasseHisto() {
 
