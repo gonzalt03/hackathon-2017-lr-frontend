@@ -30,6 +30,7 @@ angular
     return {
       getInfoJeuData : urlAPI + "api-get-data",
       getMetaData : urlAPI + "api-get-metadata",
+      getAll : urlAPI + "get-all",
       searchElement : urlAPI + "get-id",
       urlAPI : urlAPI
     };
