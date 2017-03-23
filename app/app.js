@@ -23,6 +23,11 @@ angular
     'ui.bootstrap.tpls',
     'nvd3'
   ])
+
+
+
+
+
   .config(['socialshareConfProvider', function(socialshareConfProvider) {
 
     socialshareConfProvider.configure([
