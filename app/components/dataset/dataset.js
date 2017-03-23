@@ -6,28 +6,19 @@
 
 
 angular.module('frontProjectApp')
-  .controller('DatasetCtrl', function ($scope) {
+  .controller('DatasetCtrl', function ($scope, Request, GlobalService) {
 
-    $scope.comments = [
-      {
-        author: "Jean Michel le stagiaire",
-        comment: "Le site est génial ! "
-      },
-      {
-        author: "Fred de Berlin",
-        comment: "Vous allez gagner ce hackathon !"
-      },
-      {
-        author: "Le jury",
-        comment: "Trop bien !"
-      }
-    ];
+    Request.get(GlobalService.getAll)
+      .then(function (data) {
+        console.log(data.data);
+        $scope.datasets = data.data;
+      }, function (error) {
+        console.log(error);
+      });
 
-    $scope.addComment = function (name, comment) {
-      $scope.comments.push({
-        author : name,
-        comment : comment
-      })
-    }
+    $scope.timePicture = function (time) {
+      var ti = parseFloat(200 * time);
+      return "-webkit-animation-delay: " + ti + "ms;animation-delay: " + ti + "ms;";
+    };
 
   });

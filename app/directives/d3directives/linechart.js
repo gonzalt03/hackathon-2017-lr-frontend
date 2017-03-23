@@ -11,7 +11,8 @@ angular.module('frontProjectApp')
       scope.myoptions = {
         chart: {
           type: 'lineChart',
-          height: 500,
+          height: 400,
+          width: 500,
           margin : {
             top: 20,
             right: 20,
