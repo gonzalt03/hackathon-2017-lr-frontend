@@ -15,6 +15,7 @@ angular.module('frontProjectApp')
           chart: {
             type: 'pieChart',
             height: 500,
+            width: 500,
             x: function(d){return d.key;},
             y: function(d){return d.y;},
             showLabels: true,
