@@ -29,6 +29,7 @@ angular
     var urlAPI = "http://vps.onefox.fr:3000/";
     return {
       getInfoJeuData : urlAPI + "api-get-data",
+      getMetaData : urlAPI + "api-get-metadata",
       searchElement : urlAPI + "get-id",
       urlAPI : urlAPI
     };
