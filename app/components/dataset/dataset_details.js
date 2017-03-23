@@ -6,7 +6,7 @@
 
 
 angular.module('frontProjectApp')
-  .controller('DatasetDetailsCtrl', function ($scope, GlobalService, Request, $routeParams) {
+  .controller('DatasetDetailsCtrl', function ($scope, GlobalService, Request, $routeParams, leafletData) {
 
     var id = $routeParams.id;
 
@@ -18,12 +18,12 @@ angular.module('frontProjectApp')
         console.log(error);
       });
 
-    Request.get(GlobalService.getInfoJeuData + "?url="+id)
-      .then(function(data) {
+    Request.get(GlobalService.getInfoJeuData + "?url=" + id)
+      .then(function (data) {
         console.log(data.data);
         $scope.dataset.data = data.data;
         $scope.dataset.header = Object.keys(data.data[0]);
-      }, function(error) {
+      }, function (error) {
         console.log(error);
       });
 
@@ -119,6 +119,7 @@ angular.module('frontProjectApp')
         });
 
     }
+
     function nbEleveParClassePie() {
 
       Request.get('http://localhost:3000/api-get-data?url=nb_enfants')
@@ -155,6 +156,7 @@ angular.module('frontProjectApp')
         });
 
     }
+
     $scope.results = [
       {
         title: "SIGNALISATION LUMINEUSE – SUPPORT",
@@ -173,6 +175,50 @@ angular.module('frontProjectApp')
       }
     ];
 
+    angular.extend($scope, {
+      defaults: {
+        scrollWheelZoom: false
+      },
+      la_rochelle: {
+        lat: 46.15,
+        lng: -1.15,
+        zoom: 14
+      }
+    });
 
+    $scope.select = function () {
+      leafletData.getMap().then(function (map) {
+        console.log(map);
+        var url = "ca_borne.kml";
+        console.log(url);
+        $scope.rectLayer = omnivore.kml(url).on('ready', function () {
+
+          this.eachLayer(function (marker) {
+              marker.setIcon(L.AwesomeMarkers.icon({
+                prefix: 'fa',
+                icon: 'car',
+                markerColor: 'blue'
+              }))
+            }
+          );
+        })
+          .addTo(map);
+        console.log($scope.rectLayer)
+      });
+
+      leafletData.getMap().then(function (map) {
+        console.log(map);
+        var url = "tr_piste_cyclable.kml";
+        console.log(url);
+        $scope.rectLayer = omnivore.kml(url).on('ready', function () {
+
+        })
+          .addTo(map);
+        console.log($scope.rectLayer)
+      });
+    };
+
+
+    $scope.select();
 
   });
