@@ -5,7 +5,7 @@
 'use strict';
 
 angular.module('frontProjectApp')
-  .controller('DatasetDetailsCtrl', function ($scope, GlobalService, Request, $routeParams) {
+  .controller('DatasetDetailsCtrl', function ($uibModal, $scope, GlobalService, Request, $routeParams) {
 
     var id = $routeParams.id;
 
@@ -118,6 +118,7 @@ angular.module('frontProjectApp')
         });
 
     }
+
     function nbEleveParClassePie() {
 
       Request.get('http://localhost:3000/api-get-data?url=nb_enfants')
@@ -154,31 +155,28 @@ angular.module('frontProjectApp')
         });
 
     }
-    $scope.results = [
+
+    $scope.comments = [
       {
-        title: "SIGNALISATION LUMINEUSE – SUPPORT",
-        frequence: "Quotidienne",
-        location: "La Rochelle"
+        author: "Jean Michel le stagiaire",
+        comment: "Le site est génial ! "
       },
       {
-        title: "SIGNALISATION LUMINEUSE",
-        frequence: "Quotidienne",
-        location: "La Rochelle"
+        author: "Fred de Berlin",
+        comment: "Bonne change pour le hackathon !"
       },
       {
-        title: "SIGNALISATION THOMAS – SUPPORT",
-        frequence: "Quotidienne",
-        location: "La Rochelle"
+        author: "Le jury",
+        comment: "Trop bien !"
       }
     ];
 
+    $scope.addComment = function (name, comment) {
+      $scope.comments.push({
+        author : name,
+        comment : comment
+      });
+      $scope.message = $scope.author = '';
+    };
 
-      $('#exampleModal').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget) // Button that triggered the modal
-          var recipient = button.data('whatever') // Extract info from data-* attributes
-          // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-          // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-          var modal = $(this)
-          modal.find('.modal-title').text('Nouveau message')
-      })
   });
