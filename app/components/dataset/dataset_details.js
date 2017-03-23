@@ -186,14 +186,14 @@ angular.module('frontProjectApp')
       }
     });
 
-      $('#exampleModal').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget) // Button that triggered the modal
-          var recipient = button.data('whatever') // Extract info from data-* attributes
-          // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-          // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-          var modal = $(this)
-          modal.find('.modal-title').text('Nouveau message')
-      })
+    $('#exampleModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('whatever') // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this)
+      modal.find('.modal-title').text('Nouveau message')
+    })
     $scope.select = function () {
       leafletData.getMap().then(function (map) {
         console.log(map);
@@ -212,17 +212,17 @@ angular.module('frontProjectApp')
         })
           .addTo(map);
         console.log($scope.rectLayer)
-      });
 
-      leafletData.getMap().then(function (map) {
-        console.log(map);
-        var url = "tr_piste_cyclable.kml";
-        console.log(url);
-        $scope.rectLayer = omnivore.kml(url).on('ready', function () {
+        leafletData.getMap().then(function (map) {
+          console.log(map);
+          var url = "tr_piste_cyclable.kml";
+          console.log(url);
+          $scope.rectLayer = omnivore.kml(url).on('ready', function () {
 
+          })
+            .addTo(map);
+          console.log($scope.rectLayer)
         })
-          .addTo(map);
-        console.log($scope.rectLayer)
       });
     };
 
