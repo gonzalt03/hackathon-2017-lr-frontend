@@ -21,7 +21,17 @@ angular
     'ui.bootstrap.tpls',
     'leaflet-directive'
   ])
-  .config(['socialshareConfProvider', function(socialshareConfProvider) {
+
+
+  .factory('GlobalService', function() {
+    var urlAPI = "http://vps.onefox.fr:3000/";
+    return {
+      urlRequest : urlAPI + "get-data"
+    };
+  })
+
+
+  .config(['socialshareConfProvider', function (socialshareConfProvider) {
 
     socialshareConfProvider.configure([
       {
@@ -30,22 +40,22 @@ angular
           'hashtags': 'opendata',
           'trigger': 'click',
           'popupHeight': 400,
-          'popupWidth' : 400
+          'popupWidth': 400
         }
       },
       {
         'provider': 'facebook',
         'conf': {
           'popupHeight': 400,
-          'popupWidth' : 400
+          'popupWidth': 400
         }
       },
       {
         'provider': 'email',
         'conf': {
-          'subject' : "Lien vers un open-data",
-          'popupHeight' : "300",
-          'popupWidth' : "400"
+          'subject': "Lien vers un open-data",
+          'popupHeight': "300",
+          'popupWidth': "400"
         }
       }
     ]);

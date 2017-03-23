@@ -6,7 +6,7 @@
 
 
 angular.module('frontProjectApp')
-  .controller('SearchCtrl', function ($scope, $routeParams, $location) {
+  .controller('SearchCtrl', function ($scope, $routeParams, $location, GlobalService, Request) {
 
     $scope.query = $routeParams.query;
 
