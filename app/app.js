@@ -44,22 +44,22 @@ angular
           'hashtags': 'opendata',
           'trigger': 'click',
           'popupHeight': 400,
-          'popupWidth': 400
+          'popupWidth' : 400
         }
       },
       {
         'provider': 'facebook',
         'conf': {
           'popupHeight': 400,
-          'popupWidth': 400
+          'popupWidth' : 400
         }
       },
       {
         'provider': 'email',
         'conf': {
-          'subject': "Lien vers un open-data",
-          'popupHeight': "300",
-          'popupWidth': "400"
+          'subject' : "Lien vers un open-data",
+          'popupHeight' : "300",
+          'popupWidth' : "400"
         }
       }
     ]);
