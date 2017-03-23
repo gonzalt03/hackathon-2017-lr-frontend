@@ -65,7 +65,8 @@ angular.module('frontProjectApp')
           .then(function (d) {
             //console.log(d.data.opendata.answer.data);
             let tabParking=d.data.opendata.answer.data;
-            $scope.tabParking = tab;
+            console.log(tabParking);
+            $scope.tabParking = tabParking;
         }, function (error) {
             console.log(error);
         });
