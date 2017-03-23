@@ -34,10 +34,9 @@ angular.module('frontProjectApp')
 
       Request.get('http://localhost:3000/api-get-data?url=nb_enfants')
         .then(function (d) {
-            $scope.dataTableFill = d.data;
-            $('#datatableLink').DataTable();
-          }
-        ),
+          $scope.dataTableFill = d.data;
+          $('#datatableLink').DataTable();
+        }),
         function (error) {
           console.log(error);
         }
