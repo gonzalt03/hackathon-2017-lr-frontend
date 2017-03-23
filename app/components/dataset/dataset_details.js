@@ -10,11 +10,13 @@ angular.module('frontProjectApp')
 
     var id = $routeParams.id;
 
-    $scope.dataset = {
-      id: 1,
-      name: "SIGNALISATION LUMINEUSE – SUPPORT",
-      type: "dataset"
-    };
+    Request.get(GlobalService.searchElement + "?limit=1&tag=parking")
+      .then(function (data) {
+        console.log(data.data[0]);
+        $scope.dataset = data.data[0];
+      }, function (error) {
+        console.log(error);
+      });
 
     Request.get(GlobalService.getInfoJeuData + "?url="+id)
       .then(function(data) {
