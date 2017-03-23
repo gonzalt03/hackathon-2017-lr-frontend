@@ -14,6 +14,7 @@ angular.module('frontProjectApp')
         .then(function (data) {
           console.log(data.data);
           $scope.results = data.data;
+          $scope.clickOnCard($scope.results[0]);
         }, function (error) {
           console.log(error);
         });
