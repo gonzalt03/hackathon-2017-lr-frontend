@@ -18,7 +18,48 @@
         <p>Babla</p>
       </uib-tab>
       <uib-tab index="1" heading="Tableau filtrant">
-        <p>Babladfsdfd</p>
+
+        <table class="table">
+          <thead>
+          <tr ng-repeat="header in dataset.header">
+            <th>{{header}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>john@exam∂ple.com</td>
+            <td>john@exam∂ple.com</td>
+            <td>john@exam∂ple.com</td>
+            <td>john@exam∂ple.com</td>
+            <td>john@exam∂ple.com</td>
+          </tr>
+          <tr>
+            <td>Mary</td>
+            <td>Moe</td>
+            <td>mary@example.com</td>
+          </tr>
+          <tr>
+            <td>July</td>
+            <td>Dooley</td>
+            <td>july@example.com</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <table datatable="ng" class="row-border hover" cellpadding="0" cellspacing="0" border="0" id="datatableLink">
+          <thead>
+          <tr ng-repeat="header in dataset.header">
+              <th>{{header}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="valueData in dataset.data">
+            {{valueData}}
+          </tr>
+          </tbody>
+        </table>
 
       </uib-tab>
       <uib-tab index="2" heading="Cartographie">
@@ -34,3 +75,12 @@
   </div>
 
 </div>
+
+
+<script type="text/javascript">
+  $('#datatableLink').dataTable({
+    "language": {
+      "sUrl": "lib/french.json"
+    }
+  });
+</script>
