@@ -8,75 +8,90 @@
 angular.module('frontProjectApp')
   .controller('SearchCtrl', function ($scope, $routeParams, $location, GlobalService, Request, leafletData) {
 
-    $scope.query = $routeParams.query;
+      $scope.query = $routeParams.query;
 
-    Request.get(GlobalService.searchElement + "?limit=-1&tag=" + $scope.query)
-      .then(function (data) {
-        console.log(data.data);
-        $scope.results = data.data;
-      }, function (error) {
-        console.log(error);
-      });
-
-    $scope.clickOnCard = function (aCard) {
-      $scope.identifierSelected = aCard.identifier;
-      Request.get(GlobalService.getMetaData + "?id=" + aCard.identifier)
+      Request.get(GlobalService.searchElement + "?limit=-1&tag=" + $scope.query)
         .then(function (data) {
-          console.log(data.data[0]);
-          $scope.datasetMeta = data.data[0];
+          console.log(data.data);
+          $scope.results = data.data;
         }, function (error) {
           console.log(error);
         });
-    };
 
-    $scope.goDataset = function (id) {
-      $location.path('/dataset/' + id);
-    };
+      $scope.clickOnCard = function (aCard) {
+        $scope.identifierSelected = aCard.identifier;
+        Request.get(GlobalService.getMetaData + "?id=" + aCard.identifier)
+          .then(function (data) {
+            console.log(data.data[0]);
+            $scope.datasetMeta = data.data[0];
+          }, function (error) {
+            console.log(error);
+          });
+      };
 
-    function coordToGPS(coordLamb93) {
-      // need proj4
-      var projection = '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs';
-      var pointTemp = proj4(projection).inverse(coordLamb93);
-      var coordGPS = [];
-      coordGPS[0] = pointTemp[1];
-      coordGPS[1] = pointTemp[0];
-      return coordGPS;
-    };
-    $scope.select = function () {
-      var markers = [];
+      $scope.goDataset = function (id) {
+        $location.path('/dataset/' + id);
+      };
 
-      Request.get('http://localhost:3000/api-get-data?url=disponibilite_parking')
-        .then(function (dataset) {
-          for (var props in dataset.data) {
-            var GPS = coordToGPS([dataset.data[props].dp_x, dataset.data[props].dp_y])
-            markers.push(
-              {
-                lat: GPS[0],
-                lng: GPS[1],
-                icon: {
-                  type: 'awesomeMarker',
-                  prefix: 'fa',
-                  icon: 'ravelry',
-                  markerColor: 'green'
-                },
-                message:dataset.data[props].dp_place_disponible+" places disponibles au parking "+ dataset.data[props].dp_libelle
-              });
-          }
+      function coordToGPS(coordLamb93) {
+        // need proj4
+        var projection = '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs';
+        var pointTemp = proj4(projection).inverse(coordLamb93);
+        var coordGPS = [];
+        coordGPS[0] = pointTemp[1];
+        coordGPS[1] = pointTemp[0];
+        return coordGPS;
+      };
+      $scope.select = function () {
+        var markers = [];
+
+        Request.get('http://localhost:3000/api-get-data?url=disponibilite_parking')
+          .then(function (dataset) {
+            for (var props in dataset.data) {
+              var GPS = coordToGPS([dataset.data[props].dp_x, dataset.data[props].dp_y])
+              markers.push(
+                {
+                  lat: GPS[0],
+                  lng: GPS[1],
+                  icon: {
+                    type: 'awesomeMarker',
+                    prefix: 'fa',
+                    icon: 'ravelry',
+                    markerColor: 'green'
+                  },
+                  message: dataset.data[props].dp_place_disponible + " places disponibles au parking " + dataset.data[props].dp_libelle
+                });
+            }
+          });
+        leafletData.getMap('map').then(function (map) {
+          map.locate({setView: true, maxZoom: 16, watch: true, enableHighAccuracy: true});
+          map.on('locationfound', function (e) {
+            console.log(e.latlng, e.accuracy);
+            markers.push({lat:e.latlng.lat,lng:e.latlng.lng,icon: {
+              type: 'awesomeMarker',
+              prefix: 'fa',
+              icon: 'user',
+              markerColor: 'red'
+            }});
+          })
+        });
+
+        angular.extend($scope, {
+          defaults: {
+            scrollWheelZoom: false
+          },
+          la_rochelle: {
+            lat: 46.15,
+            lng: -1.15,
+            zoom: 13,
+            autoDiscover: true
+          },
+          markers: markers
         })
-      angular.extend($scope, {
-        defaults: {
-          scrollWheelZoom: false
-        },
-        la_rochelle: {
-          lat: 46.15,
-          lng: -1.15,
-          zoom: 13
-        },
-        markers: markers
-      });
-    };
+      };
 
 
-    $scope.select();
+      $scope.select();
 
-  });
+    }
+  );

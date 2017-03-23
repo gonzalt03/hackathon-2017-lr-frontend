@@ -14,14 +14,9 @@
               {{result.title}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
             </uib-accordion-heading>
             <ul class="list-group">
-              <div class="checkbox">
+              <div ng-repeat='champ in result.champs' class="checkbox">
                 <label>
-                  <input type="checkbox"> id
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox"> name
+                  <input type="checkbox"> {{champ}}
                 </label>
               </div>
             </ul>
@@ -32,7 +27,7 @@
 
     <div class="col-md-8 searchRight">
       <div class="text-right">
-        <button ng-click="goDataset(1)" type="button" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Valider les données</button>
+        <a href="/#!/view"><button type="button" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Valider les données</button></a>
       </div>
 
       Informations sur le jeu de données
