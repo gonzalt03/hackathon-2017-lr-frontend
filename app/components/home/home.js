@@ -8,7 +8,21 @@
  * Controller of the frontProjectApp
  */
 angular.module('frontProjectApp')
-  .controller('HomeCtrl', function ($scope, $location) {
+  .controller('HomeCtrl', function ($scope, $location, GlobalService, Request) {
+
+    $scope.resultsRequest = [];
+
+      $scope.refreshRequest = function (request) {
+      if(request.length > 2){
+        Request.get(GlobalService.searchElement + "?limit=10&tag="+request)
+          .then(function(data) {
+            console.log(data.data);
+             $scope.resultsRequest = data.data;
+          }, function(error) {
+            console.log(error);
+          });
+      }
+    };
 
     $scope.cardShowed = [
       {
@@ -46,7 +60,7 @@ angular.module('frontProjectApp')
       }
     ];
 
-    $scope.resultsRequest = [
+    /**$scope.resultsRequest = [
       {
         id: 1,
         name: "SIGNALISATION LUMINEUSE – SUPPORT",
@@ -67,7 +81,7 @@ angular.module('frontProjectApp')
         name: "Parking Grande horloge, reste 15 places",
         type: "formule"
       }
-    ];
+    ];*/
 
     $scope.search = function (query) {
       $location.path('/search/' + query);
@@ -79,6 +93,8 @@ angular.module('frontProjectApp')
           return 'fa-table';
         case "formule":
           return 'fa-info-circle';
+        default:
+          return 'fa-table';
       }
     };
 
@@ -86,7 +102,6 @@ angular.module('frontProjectApp')
       var ti = parseFloat(200 * time);
       return "-webkit-animation-delay: " + ti + "ms;animation-delay: " + ti + "ms;";
     };
-
 
     $scope.goDataset = function (id) {
       $location.path('/dataset/' + id);
