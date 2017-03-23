@@ -27,10 +27,10 @@ angular.module('frontProjectApp')
       });
 
 
-    $scope.myTitle = 'LINECHART';
+    $scope.myTitle = 'Superposition de données';
     $scope.myData = sinAndCos();
 
-    $scope.myTitle2 = 'PIECHART';
+    $scope.myTitle2 = 'Répartition des élèves par classe(Autre représentation)';
 
     $scope.myTitle3 = 'Répartition des élèves par classe';
 
@@ -118,7 +118,6 @@ angular.module('frontProjectApp')
         });
 
     }
-
     function nbEleveParClassePie() {
 
       Request.get('http://localhost:3000/api-get-data?url=nb_enfants')
