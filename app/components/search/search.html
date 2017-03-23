@@ -8,7 +8,7 @@
   <div class="row searchProposition">
     <div class="col-md-4 searchLeft">
       <div ng-repeat="aCard in results">
-        <div class="animated fadeIn card" style="{{timePicture($index)}}">
+        <div ng-click="clickOnCard(aCard)" class="animated fadeIn card" style="{{timePicture($index)}}">
           <h1>{{aCard.description}}</h1>
           <p><i class="fa fa-refresh" aria-hidden="true"></i> {{aCard.modified}}</p>
           <p><i class="fa fa-building-o" aria-hidden="true"></i> {{aCard.property}}</p>
@@ -18,13 +18,29 @@
 
     <div class="col-md-8 searchRight">
       <div class="text-right">
-        <button type="button" class="btn btn-default"><i class="fa fa-cart-plus" aria-hidden="true"></i> Ajouter à ma vue</button>
-        <button ng-click="goDataset(1)" type="button" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i> Voir l'ensemble des données</button>
+        <button type="button" class="btn btn-default"><i class="fa fa-cart-plus" aria-hidden="true"></i> Ajouter à ma
+          vue
+        </button>
+        <button ng-click="goDataset(identifierSelected)" type="button" class="btn btn-primary"><i class="fa fa-eye"
+                                                                                 aria-hidden="true"></i> Voir l'ensemble
+          des données
+        </button>
       </div>
 
-      Informations sur le jeu de données
+      <div class="row listMeta">
+        <div class="col-md-6">
+          <ul class="list-group" ng-repeat="(key, value) in datasetMeta">
+            <li class="list-group-item" ng-if="value != '' && key != 'data' && key != 'header'"><h4>{{key}}</h4><br>{{value}}
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          LEAFLET
+          <br>
+          TABLE
+        </div>
+      </div>
 
-      blabla...
     </div>
   </div>
 
