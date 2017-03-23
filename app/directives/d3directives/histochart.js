@@ -56,11 +56,11 @@ angular.module('frontProjectApp')
               horizontalOff: false,
               verticalOff: true,
               unzoomEventType: 'dblclick.zoom'
-            },
-            title: {
-              enable: true,
-              text: scope.mytitle
             }
+          },
+          title: {
+            enable: true,
+            text: scope.mytitle
           }
         }
       }
