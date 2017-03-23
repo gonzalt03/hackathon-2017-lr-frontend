@@ -8,11 +8,9 @@
   <div class="col-md-12 row">
 
     <div class="text-right">
-      <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Signaler
-        un problème
+      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#alertModal"><i
+        class="fa fa-exclamation-circle" aria-hidden="true"></i> Signaler un problème
       </button>
-        </div>
     </div>
 
     <uib-tabset active="active">
@@ -59,7 +57,7 @@
         <table datatable="ng" class="row-border hover" cellpadding="0" cellspacing="0" border="0" id="datatableLink">
           <thead>
           <tr ng-repeat="header in dataset.header">
-              <th>{{header}}</th>
+            <th>{{header}}</th>
           </tr>
           </thead>
           <tbody>
@@ -75,49 +73,33 @@
 
       </uib-tab>
       <uib-tab index="3" heading="Visualisation graphique">
-            <h2>Création d'une vue personnalisée</h2>
-            <h1>Utilisation de 4 jeu de données</h1>
-
-            <div class="col-md-4 searchLeft">
-              <uib-accordion close-others="oneAtATime">
-                <div ng-repeat="result in results">
-                  <div uib-accordion-group class="panel-default" is-open="status.open">
-                    <uib-accordion-heading>
-                      {{result.title}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-                    </uib-accordion-heading>
-                    <ul class="list-group">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> id
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> name
-                        </label>
-                      </div>
-                    </ul>
-                  </div>
-                </div>
-              </uib-accordion>
-            </div>
-
-            <div class="col-md-8 searchRight">
-              <div class="text-right">
-                <button ng-click="goDataset(1)" type="button" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Valider les données</button>
-              </div>
-
-              Informations sur le jeu de données
-
-              blabla...
-            </div>
-
+        <div class="row">
           <linechart mytitle="myTitle" data="myData"></linechart>
           <piechart mytitle="myTitle2" data="myData2"></piechart>
           <histochart mytitle="myTitle3" data="myData3"></histochart>
+        </div>
+      </uib-tab>
+
+      <uib-tab index="4" heading="Commentaires">
+
+        <div class="row text-right">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Nouveau
+            commentaire
+          </button>
+        </div>
+
+        <div ng-repeat="comment in comments">
+          <div>
+            <h4>{{comment.author}}</h4>
+            <p> {{comment.comment}}</p>
+          </div>
+          <br>
+        </div>
       </uib-tab>
 
     </uib-tabset>
+
+    <br>
 
     <div class="row text-center">
       <share light="false"></share>
@@ -128,28 +110,58 @@
 </div>
 
 
-
-
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">Signaler un problème</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Nouveau commentaire</h4>
       </div>
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="recipient-name" class="control-label">Nom et prénom : </label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="recipient-name" class="control-label">Auteur</label>
+            <input ng-model="author" type="text" class="form-control" id="recipient-name">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="control-label">Mail : </label>
-            <input type="text" class="form-control" id="recipient-mail">
+            <label for="message-text" class="control-label">Message</label>
+            <textarea ng-model="message" class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary" ng-click="addComment(author, message)" data-dismiss="modal">
+          Envoyer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="alertModalLabel">Signaler un problème</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Nom et prénom</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Mail</label>
+            <input type="text" class="form-control">
           </div>
           <div class="form-group">
             <label for="message-text" class="control-label">Description du problème</label>
-            <textarea class="form-control" id="message-text"></textarea>
+            <textarea class="form-control"></textarea>
           </div>
         </form>
       </div>
@@ -159,7 +171,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 
