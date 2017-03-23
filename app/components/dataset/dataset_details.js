@@ -27,6 +27,22 @@ angular.module('frontProjectApp')
       });
 
 
+    fillData();
+
+
+    function fillData() {
+
+      Request.get('http://localhost:3000/api-get-data?url=nb_enfants')
+        .then(function (d) {
+            $scope.dataTableFill = d.data;
+            $('#datatableLink').DataTable();
+          }
+        ),
+        function (error) {
+          console.log(error);
+        }
+    }
+
     $scope.myTitle = 'Superposition de données';
     $scope.myData = sinAndCos();
 
@@ -170,7 +186,6 @@ angular.module('frontProjectApp')
         comment: "Trop bien !"
       }
     ];
-
     $scope.addComment = function (name, comment) {
       $scope.comments.push({
         author: name,
@@ -206,7 +221,7 @@ angular.module('frontProjectApp')
                   icon: 'car',
                   markerColor: 'green'
                 },
-                message:dataset.data[props].dp_place_disponible+" places disponibles au parking "+ dataset.data[props].dp_libelle
+                message: dataset.data[props].dp_place_disponible + " places disponibles au parking " + dataset.data[props].dp_libelle
               });
           }
         })
@@ -222,8 +237,6 @@ angular.module('frontProjectApp')
         markers: markers
       });
     };
-
-
     $scope.select();
 
   })
