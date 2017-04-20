@@ -1,12 +1,28 @@
-# front-project
+## Front-end Open-Data
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.16.0.
+Nous avons participé au Hackathon de La Rochelle - Edition 2017.
+Voici le prototype Frontend que nous avons réalisé.
+
+Consignes du cahier des charges :
+- Prévisualiser les jeux de données
+- Visualisation croisée de différents jeux
+- Accéder à des visualisations déjà conçues
+- Pouvoir laisser des commentaires, des réactions
+- Liker & partager sur la toile
+- Exportation des jeux de données
+- Enrichir les informations
+
+La plateforme doit utilisable par le grand public.
+
+Nos points de différences :
+- Un système de recherche avec des résultats avant même d’avoir terminé la demande !
+- Un système de mise au panier, pour vous permettre de créer vos propres jeux de données !
+
+
+[PDF de présentation](https://github.com/gonzalt03/hackathon-2017-lr-frontend/blob/master/Hackathon.pdf)
+
 
 ## Build & development
-
 Run `grunt` for building and `grunt serve` for preview.
 
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
+### Made with &hearts; by amicones
